@@ -1,17 +1,16 @@
 FROM continuumio/miniconda3
 
-EXPOSE 8888
-
-RUN [ "mkdir", "-p", "/opt/notebooks" ]
-
-RUN [ "mkdir", "-p", "/root/.local/share/jupyter/runtime" ]
-
+# Installs Jupyter
 RUN [ "/opt/conda/bin/conda", "install", "jupyter", "-y", "--quiet" ]
+
+RUN [ "mkdir", "/opt/notebooks" ]
+
+EXPOSE 8888
 
 ENTRYPOINT [ "/opt/conda/bin/jupyter", "notebook" ]
 
 CMD [ "--notebook-dir=/opt/notebooks",	\
-	"--ip='0.0.0.0'",											\
+	"--ip='*'",											\
 	"--port=8888",												\
 	"--no-browser",												\
 	"--allow-root" ]
