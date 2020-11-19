@@ -15,3 +15,6 @@ CMD [ "--notebook-dir=/opt/notebooks",	\
 	"--no-browser",												\
 	"--allow-root" ]
 
+RUN [ "mkdir", "-p", "/root/.local/share/jupyter/kernels" ]
+
+COPY kernels/kernel.json /root/.local/share/jupyter/kernels
