@@ -20,7 +20,7 @@ RUN [ "mkdir", "-p", "/home/analyst/.ipython/profile_pyspark/startup" ]
 
 COPY config/pyspark/setup.py /home/analyst/.ipython/profile_pyspark/startup/00-pyspark-setup.py
 
-COPY kernels/kernel.json /home/analyst/.local/share/jupyter/kernels/pyspark/
+COPY kernels/kernel.json /home/analyst/.local/share/jupyter/kernels/pyspark
 
 EXPOSE 8888
 
