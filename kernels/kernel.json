@@ -1,5 +1,5 @@
 {
- "argv": [ "/opt/conda/bin/python", "-m", "ipykernel", "-f", "connection_file}", "--profile", "pyspark" ],
+ "argv": [ "/opt/conda/bin/python", "-m", "ipykernel", "-f", "{connection_file}", "--profile", "pyspark" ],
  "display_name":"PySpark",
  "language":"python"
 }
