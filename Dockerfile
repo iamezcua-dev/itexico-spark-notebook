@@ -1,9 +1,10 @@
 FROM continuumio/miniconda3
 
+# Library setup
+RUN apt-get update && apt-get install -y build-essential libkrb5-dev
+
 # User setup
 RUN useradd -ms /bin/bash analyst
-
-WORKDIR /home/analyst
 
 RUN [ "chown", "-R", "analyst:analyst", "/opt" ]
 
@@ -14,13 +15,21 @@ RUN [ "/opt/conda/bin/conda", "install", "jupyter", "-y", "--quiet" ]
 
 RUN [ "mkdir", "/opt/notebooks" ]
 
-RUN [ "mkdir", "-p", "/home/analyst/.local/share/jupyter/kernels/pyspark" ]
+RUN [ "pip", "install", "sparkmagic" ]
 
-RUN [ "mkdir", "-p", "/home/analyst/.ipython/profile_pyspark/startup" ]
+USER root
 
-COPY config/pyspark/setup.py /home/analyst/.ipython/profile_pyspark/startup/00-pyspark-setup.py
+WORKDIR /opt/conda/lib/python3.7/site-packages
 
-COPY kernels/kernel.json /home/analyst/.local/share/jupyter/kernels/pyspark
+RUN jupyter-kernelspec install sparkmagic/kernels/sparkkernel
+
+RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel
+
+RUN jupyter-kernelspec install sparkmagic/kernels/sparkrkernel
+
+USER analyst
+
+WORKDIR /home/analyst
 
 EXPOSE 8888
 
