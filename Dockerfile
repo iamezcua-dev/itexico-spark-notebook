@@ -15,19 +15,24 @@ RUN [ "/opt/conda/bin/conda", "install", "jupyter", "-y", "--quiet" ]
 
 RUN [ "mkdir", "/opt/notebooks" ]
 
+# Installs sparkmagic
 RUN [ "pip", "install", "sparkmagic" ]
 
-USER root
+# Configure wrapper kernels
+RUN jupyter-kernelspec install --user `pip show sparkmagic | grep -i "Location" | cut -d' ' -f2`/sparkmagic/kernels/sparkkernel
 
-WORKDIR /opt/conda/lib/python3.7/site-packages
+RUN jupyter-kernelspec install --user `pip show sparkmagic | grep -i "Location" | cut -d' ' -f2`/sparkmagic/kernels/pysparkkernel
 
-RUN jupyter-kernelspec install sparkmagic/kernels/sparkkernel
+RUN jupyter-kernelspec install --user `pip show sparkmagic | grep -i "Location" | cut -d' ' -f2`/sparkmagic/kernels/sparkrkernel
 
-RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel
-
-RUN jupyter-kernelspec install sparkmagic/kernels/sparkrkernel
+RUN jupyter serverextension enable --py sparkmagic
 
 USER analyst
+
+# Add sparkmagic configuration
+RUN [ "mkdir", "/home/analyst/.sparkmagic" ]
+
+COPY config/config.json /home/analyst/.sparkmagic
 
 WORKDIR /home/analyst
 
