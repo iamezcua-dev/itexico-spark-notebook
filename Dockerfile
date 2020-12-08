@@ -4,11 +4,13 @@ FROM continuumio/miniconda3
 RUN mkdir /usr/share/man/man1
 
 RUN apt-get update && apt-get install -y \
-		build-essential \
-		git \
-		scala \
-		vim \
-		libkrb5-dev     \
+		build-essential                      \
+		git                                  \
+		scala                                \
+		vim                                  \
+		python3                              \
+		python3-setuptools                   \
+		libkrb5-dev                          \
 		openjdk-11-jdk-headless
 
 # User setup
