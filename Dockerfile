@@ -15,6 +15,17 @@ RUN [ "chown", "-R", "analyst:analyst", "/opt" ]
 
 USER analyst
 
+# Installing Apache Spark
+ENV SPARK_HOME /opt/spark-2.4.7-bin-without-hadoop-scala-2.12
+
+COPY bin/spark-configurator.sh /home/analyst
+
+RUN cd /opt && wget https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-without-hadoop-scala-2.12.tgz && tar xzvf spark-2.4.7-bin-without-hadoop-scala-2.12.tgz
+
+USER root
+
+RUN [ "/bin/sh", "/home/analyst/spark-configurator.sh" ]
+
 # Installs Jupyter
 RUN [ "/opt/conda/bin/conda", "install", "jupyter", "-y", "--quiet" ]
 
