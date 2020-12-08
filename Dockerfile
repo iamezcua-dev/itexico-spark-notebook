@@ -1,7 +1,12 @@
 FROM continuumio/miniconda3
 
 # Library setup
-RUN apt-get update && apt-get install -y build-essential libkrb5-dev
+RUN mkdir /usr/share/man/man1
+
+RUN apt-get update && apt-get install -y \
+		build-essential \
+		libkrb5-dev     \
+		openjdk-11-jdk-headless
 
 # User setup
 RUN useradd -ms /bin/bash analyst
