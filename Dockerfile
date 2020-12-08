@@ -19,11 +19,11 @@ RUN [ "chown", "-R", "analyst:analyst", "/opt" ]
 USER analyst
 
 # Installing Apache Spark
-ENV SPARK_HOME /opt/spark-2.4.7-bin-without-hadoop-scala-2.12
+ENV SPARK_HOME /opt/spark-2.4.7-bin-hadoop2.7
 
 COPY bin/spark-configurator.sh /home/analyst
 
-RUN cd /opt && wget https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-without-hadoop-scala-2.12.tgz && tar xzvf spark-2.4.7-bin-without-hadoop-scala-2.12.tgz
+RUN cd /opt && wget https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz && tar xzvf spark-2.4.7-bin-hadoop2.7.tgz
 
 USER root
 
