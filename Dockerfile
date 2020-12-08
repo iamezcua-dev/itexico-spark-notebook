@@ -32,6 +32,8 @@ USER root
 RUN [ "/bin/sh", "/home/analyst/spark-configurator.sh" ]
 
 # Installs Jupyter
+USER analyst
+
 RUN [ "/opt/conda/bin/conda", "install", "jupyter", "-y", "--quiet" ]
 
 RUN [ "mkdir", "/opt/notebooks" ]
