@@ -5,6 +5,9 @@ RUN mkdir /usr/share/man/man1
 
 RUN apt-get update && apt-get install -y \
 		build-essential \
+		git \
+		scala \
+		vim \
 		libkrb5-dev     \
 		openjdk-11-jdk-headless
 
