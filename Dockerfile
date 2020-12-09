@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 		python3-setuptools                   \
 		libkrb5-dev                          \
 		curl                                 \
+		maven                                \
 		openjdk-11-jdk-headless
 
 # User setup
@@ -57,6 +58,14 @@ USER analyst
 RUN [ "mkdir", "/home/analyst/.sparkmagic" ]
 
 COPY config/config.json /home/analyst/.sparkmagic/
+
+# Build and install Apache Livy
+
+WORKDIR /opt
+
+RUN [ "git", "clone", "https://github.com/apache/incubator-livy.git" ]
+
+# Final setup
 
 WORKDIR /home/analyst
 
