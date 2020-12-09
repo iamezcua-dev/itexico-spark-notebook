@@ -61,7 +61,6 @@ RUN [ "mkdir", "/home/analyst/.sparkmagic" ]
 COPY config/config.json /home/analyst/.sparkmagic/
 
 # Build, install and run Apache Livy
-
 WORKDIR /opt
 
 RUN [ "git", "clone", "https://github.com/apache/incubator-livy.git" ]
@@ -70,10 +69,9 @@ WORKDIR /opt/incubator-livy
 
 RUN [ "mvn", "clean", "package", "-DskipTests" ]
 
-RUN [ "/opt/incubator-livy/bin/livy-server", "start" ]
+RUN [ "/bin/bash", "/opt/incubator-livy/bin/livy-server", "start" ]
 
 # Final setup
-
 WORKDIR /home/analyst
 
 EXPOSE 8888
