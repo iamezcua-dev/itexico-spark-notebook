@@ -34,8 +34,6 @@ USER root
 
 RUN [ "/bin/sh", "/home/analyst/spark-configurator.sh" ]
 
-RUN [ "/bin/bash", "-c", "$SPARK_HOME/sbin/start-master.sh" ]
-
 # Installs Jupyter
 USER analyst
 
