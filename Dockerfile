@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 		python3                              \
 		python3-setuptools                   \
 		libkrb5-dev                          \
+		curl                                 \
 		openjdk-11-jdk-headless
 
 # User setup
@@ -55,7 +56,7 @@ USER analyst
 # Add sparkmagic configuration
 RUN [ "mkdir", "/home/analyst/.sparkmagic" ]
 
-COPY config/config.json /home/analyst/.sparkmagic
+COPY config/config.json /home/analyst/.sparkmagic/
 
 WORKDIR /home/analyst
 
