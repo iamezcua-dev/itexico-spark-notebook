@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 		libkrb5-dev                          \
 		curl                                 \
 		maven                                \
+		procps                               \
 		openjdk-11-jdk-headless
 
 # User setup
