@@ -21,6 +21,17 @@ RUN useradd -ms /bin/bash analyst
 
 RUN [ "chown", "-R", "analyst:analyst", "/opt" ]
 
+# Installing Apache Spark		
+ENV SPARK_HOME /opt/spark-3.0.1-bin-hadoop2.7		
+
+COPY bin/spark-configurator.sh /home/analyst		
+
+RUN cd /opt && wget https://downloads.apache.org/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz && tar xzvf spark-3.0.1-bin-hadoop2.7.tgz
+
+USER root		
+
+RUN [ "/bin/sh", "/home/analyst/spark-configurator.sh" ]
+
 # Build, install and run Apache Livy
 USER analyst
 
