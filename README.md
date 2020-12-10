@@ -1,9 +1,13 @@
 # iTexico Spark Notebook
 
 ## Getting Started
-1. Build the Docker image:
+1. Build the Docker images:
     ```sh
-    docker build --tag spark-notebook-sandbox:latest .
+    chmod +x bin/docker_build.sh
+    ```
+
+    ```sh
+    sh bin/docker_build.sh
     ```
 
 1. Start up the Docker container:
