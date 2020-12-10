@@ -43,4 +43,6 @@ WORKDIR /opt/incubator-livy
 
 RUN [ "mvn", "clean", "package", "-DskipTests" ]
 
-ENTRYPOINT [ "/bin/bash", "/opt/incubator-livy/bin/livy-server", "start" ]
+EXPOSE 8998
+
+ENTRYPOINT [ "/opt/incubator-livy/bin/livy-server" ]
