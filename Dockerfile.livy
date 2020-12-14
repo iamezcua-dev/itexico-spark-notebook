@@ -45,4 +45,8 @@ RUN [ "mvn", "clean", "package", "-DskipTests" ]
 
 EXPOSE 8998
 
+RUN [ "mkdir", "-p", "/opt/incubator-livy/logs" ]
+
+RUN [ "chmod", "+w", "/opt/incubator-livy/logs" ]
+
 ENTRYPOINT [ "/opt/incubator-livy/bin/livy-server" ]
