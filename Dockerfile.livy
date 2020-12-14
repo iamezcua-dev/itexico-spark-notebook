@@ -1,0 +1,52 @@
+FROM continuumio/miniconda3
+
+# Library setup
+RUN [ "mkdir", "-p", "/usr/share/man/man1" ]
+
+RUN apt-get update && apt-get install -y \
+		build-essential                      \
+		git                                  \
+		scala                                \
+		vim                                  \
+		python3                              \
+		python3-setuptools                   \
+		libkrb5-dev                          \
+		curl                                 \
+		maven                                \
+		procps                               \
+		openjdk-11-jdk-headless
+
+# User setup
+RUN useradd -ms /bin/bash analyst
+
+RUN [ "chown", "-R", "analyst:analyst", "/opt" ]
+
+# Installing Apache Spark		
+ENV SPARK_HOME /opt/spark-3.0.1-bin-hadoop2.7		
+
+COPY bin/spark-configurator.sh /home/analyst		
+
+RUN cd /opt && wget https://downloads.apache.org/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz && tar xzvf spark-3.0.1-bin-hadoop2.7.tgz
+
+USER root		
+
+RUN [ "/bin/sh", "/home/analyst/spark-configurator.sh" ]
+
+# Build, install and run Apache Livy
+USER analyst
+
+WORKDIR /opt
+
+RUN [ "git", "clone", "https://github.com/apache/incubator-livy.git" ]
+
+WORKDIR /opt/incubator-livy
+
+RUN [ "mvn", "clean", "package", "-DskipTests" ]
+
+EXPOSE 8998
+
+RUN [ "mkdir", "-p", "/opt/incubator-livy/logs" ]
+
+RUN [ "chmod", "+w", "/opt/incubator-livy/logs" ]
+
+ENTRYPOINT [ "/opt/incubator-livy/bin/livy-server" ]
