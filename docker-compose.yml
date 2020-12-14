@@ -1,0 +1,9 @@
+version: '3'
+services:
+  livy:
+    image: itexico-livy-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.livy
+    ports:
+      - "8998:8998"
