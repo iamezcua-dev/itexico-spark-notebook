@@ -1,0 +1,17 @@
+version: '3'
+services:
+  livy:
+    image: itexico-livy-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.livy
+    ports:
+      - "8998:8998"
+  jupyter:
+    image: itexico-jupyter-notebook:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
+    ports:
+      - "8888:8888"
+
