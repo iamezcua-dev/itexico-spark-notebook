@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.livy
+    hostname: livy
     ports:
       - "8998:8998"
     networks:
@@ -14,8 +15,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.jupyter
+    hostname: jupyter
     ports:
       - "8888:8888"
+    links:
+      - livy:livy
+    depends_on:
+      - livy
     networks:
       - itexico-spark-notebook-network
 
