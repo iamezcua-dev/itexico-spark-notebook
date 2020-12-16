@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile.livy
     ports:
       - "8998:8998"
+    networks:
+      - itexico-spark-notebook-network
   jupyter:
     image: itexico-jupyter-notebook:latest
     build:
@@ -14,4 +16,9 @@ services:
       dockerfile: Dockerfile.jupyter
     ports:
       - "8888:8888"
+    networks:
+      - itexico-spark-notebook-network
 
+networks:
+  itexico-spark-notebook-network:
+    driver: bridge
