@@ -2,6 +2,7 @@ version: '3.5'
 services:
   livy:
     image: itexico-livy-server:latest
+    container_name: itexico-livy-server
     build:
       context: .
       dockerfile: Dockerfile.livy
@@ -12,6 +13,7 @@ services:
       - itexico-jupyter
   jupyter:
     image: itexico-jupyter-notebook:latest
+    container_name: itexico-jupyter-notebook
     build:
       context: .
       dockerfile: Dockerfile.jupyter
