@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
 		curl                                 \
 		maven                                \
 		procps                               \
-		openjdk-11-jdk-headless
+		openjdk-11-jdk-headless              \
+    inetutils-ping
 
 # User setup
 RUN useradd -ms /bin/bash analyst
