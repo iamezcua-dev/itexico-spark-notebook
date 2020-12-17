@@ -9,7 +9,7 @@ services:
     ports:
       - "8998:8998"
     networks:
-      - itexico-spark-notebook-network
+      - itexico-jupyter
   jupyter:
     image: itexico-jupyter-notebook:latest
     build:
@@ -23,8 +23,9 @@ services:
     depends_on:
       - livy
     networks:
-      - itexico-spark-notebook-network
+      - itexico-jupyter
 
 networks:
-  itexico-spark-notebook-network:
-    driver: bridge
+  itexico-jupyter:
+      name: itexico-jupyter
+      driver: bridge
