@@ -3,6 +3,11 @@ services:
   livy:
     image: itexico-livy-server:latest
     container_name: itexico-livy-server
+    volumes:
+      - type: bind
+        source: ./config/incubator-livy/conf/livy.conf
+        target: /opt/incubator-livy/conf/livy.conf
+        read_only: true
     build:
       context: .
       dockerfile: Dockerfile.livy
