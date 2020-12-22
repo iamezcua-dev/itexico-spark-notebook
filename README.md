@@ -47,6 +47,7 @@ Since this project uses [Docker](https://www.docker.com) containers, you don't n
    <br/>
      
    For instance, you can choose the **Spark** from the dropdown list.<br/><br/>
+   <br/>
 
 1. A new browser tab should be opened and you are ready to start coding.<br/>
    For example, let's use the **Pi Estimation** example obtained from the Examples section of the [Apache Spark official webpage](https://spark.apache.org/examples.html).
