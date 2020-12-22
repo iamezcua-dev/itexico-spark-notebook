@@ -36,7 +36,7 @@ Since this project uses [Docker](https://www.docker.com) containers, you don't n
    
    Copy and paste the one that contains **127.0.0.1** or **localhost** in your favorite Web browser
 
-   > Important: The URL shown above is just an example. Please, do not use it!
+   > Important: The URL shown above is just an example. Please, do not use it!<br/>
 
 1. Once Jupyter webpage is loaded, you can create, open and upload a Jupyter Notebook.<br/>
    You can create Notebook files using any of the following languages you can choose from:
@@ -46,8 +46,7 @@ Since this project uses [Docker](https://www.docker.com) containers, you don't n
    
    <br/>
      
-   For instance, you can choose the **Spark** from the dropdown list.<br/><br/>
-   <br/>
+   For instance, you can choose the **Spark** from the dropdown list.<br/>
 
 1. A new browser tab should be opened and you are ready to start coding.<br/>
    For example, let's use the **Pi Estimation** example obtained from the Examples section of the [Apache Spark official webpage](https://spark.apache.org/examples.html).
