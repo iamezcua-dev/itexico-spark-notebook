@@ -64,7 +64,7 @@ Since this project uses [Docker](https://www.docker.com) containers, you don't n
    println( s"Pi is roughly ${4.0 * count / NUM_SAMPLES}" )
    ```
 
-1. Hit ```Shift+Enter``` to run the code. The **"Starting Spark application"** message confirms that the execution is taking place.<br/><br/>
+1. Hit ```Shift+Enter``` to run the code. The **"Starting Spark application"** message confirms that the execution is taking place.<br/>
 
 1. The result should be something similar to:
    ```text
